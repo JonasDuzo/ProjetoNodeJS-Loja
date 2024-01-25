@@ -1,0 +1,54 @@
+<h2>Editar Postagem</h2>
+<hr>
+
+<div class="row my-5">
+    <form method="POST" action="/admin/postagens/edit">
+
+        <input type="hidden" name="id" value="{{postagem._id}}">
+
+        <div class="col-lg-6 offset-lg-3 mb-4">
+            <label for="titulo" class="label-control">Título</label>
+            <input type="text" name="titulo" class="form-control" value="{{postagem.titulo}}" required>
+        </div>
+
+        <div class="col-lg-6 offset-lg-3 mb-4">
+            <label for="slug" class="label-control">Slug</label>
+            <input type="text" name="slug" class="form-control" value="{{postagem.slug}}" required>
+        </div>
+
+        <div class="col-lg-6 offset-lg-3 mb-4">
+            <label for="descricao" class="label-control">Descrição</label>
+            <input type="text" name="descricao" class="form-control" value="{{postagem.descricao}}" required>
+        </div>
+
+        <div class="col-lg-6 offset-lg-3 mb-4">
+            <label for="conteudo" class="label-control">Conteúdo</label>
+            <textarea name="conteudo" rows="5" class="form-control" required>{{postagem.conteudo}}</textarea>
+        </div>
+
+        <div class="col-lg-6 offset-lg-3 mb-4">
+            <div class="row">
+                <div class="col-lg-6">
+                    <label for="categoria">Categoria</label>
+                    <select class="form-select" name="categoria" required>
+                        {{#each categorias}}
+                        <option value="{{_id}}">{{nome}}</option>
+                        {{else}}
+                        <option value="0">Nenhum registro</option>
+                        {{/each}}
+                    </select>
+                </div>
+
+                <div class="col-lg-6">
+                    <label for="date">Data</label>
+                    <input type="date" name="date" class="form-control" value="{{postagem.date}}" required>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-2 offset-lg-5 d-grid mt-5">
+            <button type="submit" class="btn btn-success">Editar</button>
+        </div>
+
+    </form>
+</div>

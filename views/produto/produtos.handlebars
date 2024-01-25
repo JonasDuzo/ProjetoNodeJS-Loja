@@ -1,0 +1,46 @@
+<div class="row">
+
+    <div class="col">
+        <h2>Produtos</h2>
+    </div>
+
+    <div class="col">
+        <form class="d-flex" method="GET" action="/produtos/pesquisar">
+            <input type="search" class="form-control" id="nome" name="nome" placeholder="Digite o nome do produto">
+            <button type="submit" class="btn btn-primary ms-2">Pesquisar</button>
+        </form>
+    </div>
+
+</div>
+
+<hr>
+
+<div class="col mt-5">
+    <div class="row justify-content-center">
+
+        {{#each produtos}}
+
+        <div class="card col-3 m-1 p-0" style="display: inline-flex; width: 40vh;">
+
+            <div class="card-body">
+                <img style="display: block;" src="{{imagem}}" class="mb-2" width="100%">
+                <h5 class="card-title">{{nome}}</h5>
+                <p class="text-success"><strong>{{preco}}</strong></p>
+                <div class="d-grid justify-content-lg-end">
+                    <a href="/produto/{{nome}}" class="btn btn-sm btn-success">Comprar</a>
+                </div>
+            </div>
+
+        </div>
+
+
+        {{else}}
+
+        <div class="text-center mt-5 text-muted">
+            <h5>Nenhum produto encontrado =/</h5>
+        </div>
+
+        {{/each}}
+
+    </div>
+</div>

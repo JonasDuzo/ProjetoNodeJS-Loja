@@ -1,0 +1,76 @@
+<div class="row">
+
+    <div class="col">
+        <h2>Lista de Produtos</h2>
+    </div>
+
+    <div class="col">
+        <form class="d-flex" method="GET" action="/admin/produtos/pesquisar">
+            <input type="search" class="form-control" id="nome" name="nome" placeholder="Digite o nome do produto">
+            <button type="submit" class="btn btn-primary ms-2">Pesquisar</button>
+        </form>
+    </div>
+
+</div>
+
+<hr>
+
+<div class="text-end mb-2">
+    <a href="/admin/produtos/add"><button class="btn btn-success">Novo Produto</button></a>
+</div>
+
+<div class="col mt-5">
+    <div class="row justify-content-center">
+        {{#each produtos}}
+
+        <div class="card col-3 m-1 p-0" style="display: inline-flex; width: 40vh;">
+
+            <div class="card-body">
+                <img style="display: block;" src="{{imagem}}" width="100%">
+                <h5 class="card-title mt-2">{{nome}}</h5>
+                <p class="text-success"><strong>{{preco}}</strong></p>
+
+                <a href="/admin/produtos/edit/{{_id}}" class="btn btn-sm btn-outline-primary">Editar</a>
+
+                {{!-- Excluir --}}
+                <form method="POST" action="/admin/produtos/excluir" style="display: inline;">
+                    <input type="hidden" name="id" value="{{_id}}">
+
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#modalDeletar-{{_id}}"
+                        class="btn btn-sm btn-outline-danger">Excluir</button>
+
+                    {{!-- <button type="submit" class="btn btn-sm btn-outline-danger">Excluir</button> --}}
+
+                    <div class="modal fade" id="modalDeletar-{{_id}}" tabindex="-1" aria-labelledby="modalDeletarLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title text-danger" id="modalDeletarLabel">ATENÇÃO!</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Você realmente deseja excluir o produto: {{nome}}?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-danger">Excluir</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                {{!-- Fim Excluir --}}
+            </div>
+        </div>
+
+        {{else}}
+        <div class="text-center mt-5 text-muted">
+            <h5>Nenhuma categoria cadastrada.</h5>
+        </div>
+
+        {{/each}}
+
+
+    </div>
+</div>

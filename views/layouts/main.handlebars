@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    {{!-- Font-Awesome instalado via npm install --save fortawesome/fontawesome-free pasta publica--}}
+    <link rel="stylesheet" href="/css/all.min.css">
+    {{!-- Para inserir imagens, só precisa colocar o /img/nome da imagem --}}
+    <link href="/img/favicon.ico" rel="icon" type="image/x-icon">
+    <title>Projeto Blog</title>
+</head>
+
+<body>
+    {{!-- Topo da Página --}}
+    {{>_navbar}}
+
+    {{!-- Corpo da Página --}}
+    <div class="container mt-5">
+
+        {{#if error}}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{error}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {{else}}
+
+        {{/if}}
+        {{>_msg}}
+        {{{body}}}
+    </div>
+
+    {{>_footer}}
+</body>
+
+<script src="/js/bootstrap.js"></script>
+
+</html>

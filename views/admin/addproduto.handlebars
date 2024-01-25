@@ -1,0 +1,46 @@
+{{#each erros}}
+{{!-- <div class="alert alert-danger">{{texto}}</div> --}}
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {{texto}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+{{else}}
+
+{{/each}}
+
+<h2>Adicionar Produto</h2>
+<hr>
+
+<div class="row mt-5 mb-5">
+    {{!-- enctype="multipart/form-data" se utiliza quando o formulário ira enviar algum arquivo --}}
+    <form method="POST" action="/admin/produtos/cad" enctype="multipart/form-data">
+
+        <div class="col-lg-6 offset-lg-3 mb-4">
+            <label for="nome" class="label-control">Nome</label>
+            <input type="text" name="nome" class="form-control" required>
+        </div>
+
+        <div class="col-lg-6 offset-lg-3 mb-4">
+            <label for="preco" class="label-control">Preço</label>
+            <input type="text" id="preco" oninput="validarNumero(this)" name="preco" class="form-control" required>
+        </div>
+
+        <div class="col-lg-6 offset-lg-3 mb-4">
+            <label for="imagem" class="label-control">Imagem</label>
+            <input type="file" name="imagem" class="form-control" accept="image/*" required>
+        </div>
+
+        <div class="col-lg-2 offset-lg-5 d-grid mt-5">
+            <button type="submit" class="btn btn-success">Adicionar</button>
+        </div>
+
+    </form>
+</div>
+
+<script>
+    function validarNumero(input) {
+        // Substitua tudo que não for número ou ponto por uma string vazia
+        input.value = input.value.replace(/[^0-9.]/g, '');
+    }
+</script>

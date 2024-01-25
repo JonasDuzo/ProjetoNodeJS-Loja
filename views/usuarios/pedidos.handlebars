@@ -1,0 +1,25 @@
+<h2>Meus Pedidos</h2>
+<hr>
+
+<div class="row">
+
+    {{#each vendas}}
+
+    {{#each produtos}}
+    <div style="display: inline; width: 15rem;" class="card me-2 p-2 col-2 text-center">
+
+        <img src="{{imagemProduto}}" class="mb-2" width="80%">
+        <h5 class="card-title">{{nomeProduto}}</h5>
+        <h6 class="card-subtitle text-muted">{{formatarMoeda precoProduto}} | Qtde: {{qtde}}</h6>
+
+    </div>
+    {{/each}}
+    <div class="text-end">
+        <h6>Data: {{formatarData createdAt}}</h6>
+        <h4>Total: {{formatarMoeda total}}</h4>
+    </div>
+    <hr>
+
+    {{/each}}
+
+</div>

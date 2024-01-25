@@ -1,0 +1,38 @@
+{{!-- {{#each erros}}
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {{texto}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{{else}}
+
+{{/each}} --}}
+
+<div class="row mt-5">
+
+    <div class="py-5 col-lg-5 offset-lg-4 shadow-lg p-3 mb-5 bg-body rounded" style="margin: 0 auto;">
+
+        <form method="POST" action="/usuarios/login">
+
+            <h3 class="text-center mb-5">Entrar na conta</h3>
+
+            <div class="form-floating mb-4">
+                <input type="email" name="email" class="form-control" id="floatingEmail" placeholder="name@example.com"
+                    required>
+                <label for="floatingEmail" class="text-secondary">Email</label>
+            </div>
+
+            <div class="form-floating mb-4">
+                <input type="password" name="senha" class="form-control" id="floatingPassword" placeholder="Password"
+                    required>
+                <label for="floatingPassword" class="text-secondary">Senha</label>
+            </div>
+
+            <div class="mt-5 col-lg-4 offset-lg-4 d-grid">
+                <button type="submit" class="btn btn-success">Login</button>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>

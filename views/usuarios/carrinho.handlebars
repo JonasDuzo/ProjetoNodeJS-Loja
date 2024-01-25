@@ -1,0 +1,66 @@
+<h2>Carrinho</h2>
+<hr>
+
+<form method="POST" action="/usuarios/carrinho/finalizar">
+
+    <input type="hidden" name="idUsuario" value="{{user._id}}">
+    <input type="hidden" name="nomeUsuario" value="{{user.nome}}">
+
+    {{#each carrinho.produtos}}
+    <div class="row align-items-center">
+
+        <div class="col-2">
+            <input type="hidden" name="produtoID[]" value="{{this.produtoID}}">
+            <img src="{{produtoImagem}}" width="150px">
+            <input type="hidden" name="produtoImagem[]" value="{{this.produtoImagem}}">
+        </div>
+
+        <div class="col-6">
+            <h5>{{produtoNome}}</h5>
+            <input type="hidden" name="produtoNome[]" value="{{this.produtoNome}}">
+        </div>
+
+        <div class="col-2">
+            <h5>{{formatarMoeda produtoPreco}}</h5>
+            <input type="hidden" name="produtoPreco[]" value="{{this.produtoPreco}}">
+        </div>
+
+        <div class="col-1">
+            <label for="quantidade" class="form-label m-0">Qtde.</label>
+            <input name="quantidade[]" type="number" min="1" value="{{this.quantidade}}" class="form-control mb-4">
+        </div>
+
+        <div class="col-1">
+            <a class="btn btn-danger" href="/usuarios/carrinho/excluir-item/{{produtoID}}">X</a>
+        </div>
+
+    </div>
+
+    <hr>
+
+    {{else}}
+    <div class="text-center mt-5 text-muted">
+        <h5>Nenhum produto no carrinho =/</h5>
+    </div>
+    {{/each}}
+
+    {{#if carrinho.produtos}}
+
+    {{!-- BOTÕES --}}
+    <div class="row mb-5">
+        <div class="col"><a class="btn btn-danger" href="/usuarios/carrinho/limpar-carrinho">Limpar Carrinho</a></div>
+        <div class="col text-end"><a class="btn btn-primary" href="/produtos">Continuar Comprando</a></div>
+    </div>
+
+    <input type="hidden" name="total" value="{{carrinho.total}}">
+    <h5 class="text-end">TOTAL: <span class="h5 text-success">{{formatarMoeda carrinho.total}}</span></h5>
+
+    <div class="col mt-1 text-end">
+        <button type="submit" class="btn btn-success btn-lg">Comprar</button>
+    </div>
+    {{!-- FIM BOTÕES --}}
+</form>
+
+{{else}}
+
+{{/if}}

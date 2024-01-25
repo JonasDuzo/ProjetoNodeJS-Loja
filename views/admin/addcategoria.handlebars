@@ -1,0 +1,35 @@
+{{#each erros}}
+{{!-- <div class="alert alert-danger">{{texto}}</div> --}}
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {{texto}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+{{else}}
+
+{{/each}}
+
+<h2>Nova Categoria</h2>
+<hr>
+
+<div class="row mt-5">
+
+    <form method="POST" action="/admin/categorias/cad">
+
+        <div class="col-lg-4 offset-lg-4 mb-2">
+            <label for="nome" class="label-control">Nome</label>
+            <input type="text" name="nome" class="form-control" required>
+        </div>
+
+        <div class="col-lg-4 offset-lg-4 mb-4">
+            <label for="slug" class="label-control">Slug</label>
+            <input type="text" name="slug" class="form-control" required>
+        </div>
+
+        <div class="col-lg-4 offset-lg-4 d-grid">
+            <button type="submit" class="btn btn-success">Adicionar</button>
+        </div>
+
+    </form>
+
+</div>
